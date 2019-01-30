@@ -15,28 +15,6 @@ module.exports = {
   devtool: 'eval',
   module: {
     rules: [
-      // {
-      //   test: /\.(css|scss)$/,
-      //   use: [
-      //     {
-      //       loader: 'style-loader'
-      //     },
-      //     {
-      //       loader: 'css-loader',
-      //       options: {
-      //         modules: true,
-      //         camelCase: true,
-      //         sourceMap: true
-      //       }
-      //     },
-      //     {
-      //       loader: 'sass-loader',
-      //       options: {
-      //          sourceMap: true
-      //       }
-      //     }
-      //   ]
-      // }
       {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader']
