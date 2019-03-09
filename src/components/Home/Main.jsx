@@ -1,9 +1,13 @@
-import './app.scss';
+import React from 'react';
 
-export const HomeMain = () => {
-    return (
-        <div className='App'>
-            <h1> Hello, World!</h1>
-        </div>
-    );
+import './Main.scss';
+
+const HomeMain = () => {
+  return (
+    <div className="App">
+      <h1> Hello, World!</h1>
+    </div>
+  );
 };
+
+export default HomeMain;

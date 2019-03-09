@@ -19,13 +19,24 @@
       "@babel/plugin-proposal-class-properties"
     ]
   },
-  "scripts": {
-    "dev": "webpack-dev-server --env.env=dev",
-    "dev:bundleanalyzer": "yarn dev --env.addons=bundleanalyzer",
-    "prebuild": "rimraf dist",
-    "build": "cross-env NODE_ENV=production webpack -p --env.env=prod",
-    "build:bundleanalyzer": "yarn build --env.addons=bundleanalyzer"
-  },
+    "scripts": {
+      "dev": "webpack-dev-server --env.env=dev",
+      "dev:bundleanalyzer": "yarn dev --env.addons=bundleanalyzer",
+      "lint": "eslint --debug src/**/*",
+      "lint:write": "eslint --debug src/ --fix",
+      "prettier": "prettier --write src/**/*.jsx",
+      "prebuild": "rimraf dist",
+      "build": "cross-env NODE_ENV=production webpack -p --env.env=prod",
+      "build:bundleanalyzer": "yarn build --env.addons=bundleanalyzer"
+    },
+    "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged"
+      }
+    },
+    "lint-staged": {
+      "*.(js|jsx)": ["npm run lint:write", "git add"]
+    },
   "author": "Ebrahim Hamdy",
   "license": "ISC",
   "devDependencies": {
@@ -37,6 +48,19 @@
     "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.4.6",
     "babel-loader": "^8.0.5",
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-jest-enzyme": "^6.0.2",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jest": "^21.18.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.9.1",
+    "husky": "^1.1.2",
+    "lint-staged": "^7.3.0",
+    "prettier": "^1.14.3",
     "chalk": "^2.4.2",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
@@ -48,6 +72,7 @@
     "path": "^0.12.7",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.5.0",
+    "prettier": "^1.16.4",
     "react-hot-loader": "^4.6.3",
     "rimraf": "^2.6.3",
     "sass-loader": "^7.1.0",
@@ -66,7 +91,7 @@
     "react-delay-render": "^0.1.2",
     "react-dom": "^16.7.0",
     "react-imported-component": "^5.4.0",
-    "react-router-dom": "^4.3.1",
+    "react-router-dom": "4.4.0-beta.6",
     "semantic-ui-react": "^0.84.0"
   },
   "keywords": [

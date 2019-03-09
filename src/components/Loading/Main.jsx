@@ -1,3 +1,6 @@
+import React from 'react';
 import { Loader } from 'semantic-ui-react';
 
-export const Loading = () => <Loader active size="massive" />;
+const Loading = () => <Loader active size="massive" />;
+
+export default Loading;

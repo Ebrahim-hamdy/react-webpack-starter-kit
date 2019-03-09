@@ -1,5 +1,5 @@
-const commonPaths = require('./common-paths');
 const webpack = require('webpack');
+const commonPaths = require('./common-paths');
 
 const port = process.env.PORT || 3000;
 const host = 'localhost';
@@ -7,29 +7,26 @@ const host = 'localhost';
 module.exports = {
   mode: 'development',
   entry: {
-    app: `${commonPaths.appEntry}/index.jsx`
+    app: `${commonPaths.appEntry}/index.jsx`,
   },
   output: {
-    filename: '[name].[hash].js'
+    filename: '[name].[hash].js',
   },
-  devtool: 'eval',
+  devtool: 'source-map',
   module: {
     rules: [
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
-      }
-    ]
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+    ],
   },
 
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin()
-  ],
+  plugins: [new webpack.HotModuleReplacementPlugin(), new webpack.NamedModulesPlugin()],
 
   devServer: {
-    host: host,
-    port: port,
+    host,
+    port,
     historyApiFallback: true,
     hot: true,
     open: true,
@@ -43,11 +40,11 @@ module.exports = {
     watchContentBase: true,
     // full-screen overlay in the browser for compiler errors or warnings
     overlay: {
-        warnings: false,
-        errors: true
+      warnings: false,
+      errors: true,
     },
     after() {
-        process.stdout.write(`dev server is running: http://${host}:${port}\n`);
-    }
-  }
+      process.stdout.write(`dev server is running: http://${host}:${port}\n`);
+    },
+  },
 };

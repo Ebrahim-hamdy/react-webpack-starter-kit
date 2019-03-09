@@ -1,7 +1,8 @@
-import Home from './components/Home/Main';
+import React from 'react';
+import Home from '../../components/Home/Main';
 
-export const HomeMain = () => {
-    return(
-        <Home />;
-    );
+const HomeMain = () => {
+  return <Home />;
 };
+
+export default HomeMain;
